@@ -1,0 +1,17 @@
+RewriteEngine on
+#后台
+RewriteCond %{REQUEST_URI} ^/admin/$
+RewriteRule ^(admin)/$ /$1 [R=301,L]
+RewriteCond %{REQUEST_URI} ^/admin
+RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
+
+#前台
+RewriteCond %{REQUEST_URI} ^.*$
+RewriteRule ^(.*)$ /frontend/web/$1
+
+
+#图片
+RewriteCond %{REQUEST_URI} ^/images/$
+RewriteRule ^(images)/$ /$ [R=301,L]
+RewriteCond %{REQUEST_URI} ^/images
+RewriteRule ^images(/.+)?$ /images/ [L,PT]
